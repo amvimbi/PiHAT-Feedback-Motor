@@ -10,3 +10,11 @@ altering the torque and turning on indicator LEDs. All in all, with its high clo
 response, low positional feedback latency operation. Use cases of the circuit include but are not limited to driving a high 
 precision robotic arm used in surgery, an electronic steering system vehicle which require low latency and good feedback and
 control for wind turbines to ensure that they get the highest wind incidence as this requires accurate position awareness.
+
+Possible use cases
+Control robotic armfor cancer operations-to remove all the tumour and surrounding cancer tissue effectively
+Can drive Robots used for handling radioactive & bio-hazardous experiments
+
+The feedback circuitry will function as follows:
+
+The position feedback circuit is connected through a buffer to GPIO 17 which is configured to analogue mode. The position feedback circuit will comprise a circular resistive track on which a wiper slides, such that the wiper voltage changes linearly with angular displacement. This pin will have a voltage whose amplitude corresponds to the angular displacement of the motor which makes this spatial data to be known by the controller at any instant. Parallel to this pin, a differentiator is connected which gives out a voltage corresponding to the rate of change of the displacement (velocity). The output to the latter circuit is connected to 27 of the HAT which is configured to analogue mode, the microcontroller is programmed to monitor the amplitude of  this  voltage  and  whether  it  is  changing  and  respond  in apredetermined  manner.  If  this amplitude is too low, then the motor is spinning too slowly and the output GPIO pin 23 which operated in output mode in the microcontroller goes high and increases the field current which torques  the  motor  to  a  higher  angularvelocity.  By  monitoring  the  rate  of  change  in  the amplitude, the Pi also keeps track of angular acceleration.
